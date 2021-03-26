@@ -3,6 +3,7 @@ package com.yadavan88.opaque
 import com.yadavan88.opaque.models.Patient
 
 import java.time.LocalDate
+import scala.util.Try
 
 object models {
 
@@ -50,7 +51,7 @@ object models {
 
   opaque type MyLocalDate <: LocalDate = LocalDate
   object MyLocalDate {
-    def parse(dt:String): MyLocalDate = LocalDate.parse(dt)
+    def parse(dt:String): Option[MyLocalDate] = Try(LocalDate.parse(dt)).toOption
   }
 
   final case class Patient(id: String, age: Age, height: Height, weight: Weight)

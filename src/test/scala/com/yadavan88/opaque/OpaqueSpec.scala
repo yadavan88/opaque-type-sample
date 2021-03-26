@@ -62,9 +62,10 @@ class OpaqueSpec extends munit.FunSuite {
   }
 
   test("access undelying apis for context bounded opaque types") {
-    val dt:MyLocalDate = MyLocalDate.parse("2021-03-24")
+    val dt: Option[MyLocalDate] = MyLocalDate.parse("2021-03-24")
     val now = LocalDate.parse("2021-03-24")
-    assert(dt.isEqual(now))
+    assert(dt.isDefined)
+    assert(dt.get.isEqual(now))
   }
 
 

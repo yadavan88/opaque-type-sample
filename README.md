@@ -134,7 +134,7 @@ The underlying apis of the main type will be accessible for the opaque type with
 ```scala
 opaque type MyLocalDate <: java.time.LocalDate = java.time.LocalDate
 object MyLocalDate {
-  def parse(dt:String): MyLocalDate = java.time.LocalDate.parse(dt)
+  def parse(dt:String): Option[MyLocalDate] = Try(java.time.LocalDate.parse(dt)).toOption
 }
 ```
 Now, on an instance of `MyLocalDate`, all the api's of `java.time.LocalDate` will be also accessible, since `MyLocalDate` is having context bound of java.time.LocalDate. 

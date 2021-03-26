@@ -37,7 +37,7 @@ Similarly, we can define opaque types for weight and height as well.
 opaque type Weight = Int
 opaque type Height = Int
 ```
-Note that, these opaque types can be interchangeably used only in the same scope where it is defined.
+Note that, these opaque types can be interchangeably used only in the same scope where it is defined, thus making it **opaque** outside the scope of definition.
 We can move them into an object, so that they can be used without any issues later.
 
 
@@ -137,7 +137,7 @@ object MyLocalDate {
   def parse(dt:String): MyLocalDate = java.time.LocalDate.parse(dt)
 }
 ```
-Now, on an instance of `MyLocalDate`, all the api's of `java.time.LocalDate` will be also accessible, since `MyLocalDate` is having context bound of java.time.LocalDate
+Now, on an instance of `MyLocalDate`, all the api's of `java.time.LocalDate` will be also accessible, since `MyLocalDate` is having context bound of java.time.LocalDate. 
 
 ### How it is different from value classes and case classes
 - Opaque type aliases do not have any api's by default. The developer needs to implement all required apis. 
@@ -146,5 +146,3 @@ Now, on an instance of `MyLocalDate`, all the api's of `java.time.LocalDate` wil
 - Underlying type's apis will not be accessible outside, only the explicitly defined api's are exposed (Except in the case of context bounds)
 - Runtime erasure of opaque types
 
-For more information on the sbt-dotty plugin, see the
-[dotty-example-project](https://github.com/lampepfl/dotty-example-project/blob/master/README.md).
